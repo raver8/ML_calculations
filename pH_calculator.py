@@ -21,12 +21,16 @@ def alpha():
             if isinstance("pH", (int, float)):
                 pH = np.array("pH", dtype=float)
                             
-            h3o = -math.log10(pH)
-            return h3o
-        print(h3o)
+                h3o = -math.log10(pH)
+                return h3o
+            else:
+                return None
             
     except ValueError:
         print('Decoding JSON has failed')
 
+    print(h3o)
+
     alpha()
+
    
