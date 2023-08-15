@@ -1,36 +1,41 @@
+
 import json
 import numpy as np
-import math
+import math 
 
-def alpha():
-    try:
-        with open('all_TPEN_DERIVATIVE_records.json', 'r', encoding = 'utf-8') as f:
-    #the load function will directly load and parse the file, creating a dictionary 
-            json_data = json.load(f)
+def alpha(file_name):
 
-            filtered_data = []
+    with open(file_name, "r",  encoding = 'utf-8') as file:
+    
+        json_data = json.load(file)
+    
+    filtered_data = []
+    
+    for record in json_data:
+        
+        filtered_data.append(record["aqueous phase"])
 
-            for aqueous in json_data["aqueous phase"]:
-                aqueous_data = {
-                "solutes" == aqueous["solutes"],
-                "pH" == aqueous["pH"],
-                "volume" == aqueous["volume"],}
-                            
-            filtered_data.append(aqueous_data)
-                        
-            if isinstance("pH", (int, float)):
-                pH = np.array("pH", dtype=float)
-                            
-                h3o = -math.log10(pH)
-                return h3o
-            else:
-                return None
+    #this will print a list of associated name-value pairs of all data within the aqueous phase key
+    
+    for lst in filtered_data:
+        
+        pH = filtered_data[1]
+        
+        if isinstance(pH, (int, float)):
             
-    except ValueError:
-        print('Decoding JSON has failed')
+            pH = np.array("pH", dtype=float)
+            
+            h3o = -math.log10(pH)
+            
+            return h3o
+        
+        elif:
+            
+            for lst_2 in filtered_data:
+                
+                pH = filtered_data [0]
 
-    print(h3o)
+#trying to access all information within "solutes" in the list containing all aqueous phase data, to access concentration of strong acid and use that for pH
+            
 
-    alpha()
-
-   
+alpha("all_TPEN_DERIVATIVE_records.json")
